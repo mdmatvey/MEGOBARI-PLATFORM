@@ -1,0 +1,31 @@
+svg.segment {
+    z-index: 1;
+    cursor: not-allowed;
+    transition: .3s;
+}
+
+svg.segment.forSale {
+    z-index: 10;
+    cursor: pointer;
+    transition: .3s;
+}
+
+svg.segment.buffer {
+    z-index: 0;
+    cursor: default;
+}
+
+svg.segment:hover {
+    z-index: 1000;
+    scale: 1.05
+}
+
+svg.segment.forSale:hover {
+    z-index: 1000;
+    scale: 1.2
+}
+
+svg.segment.buffer:hover {
+    z-index: 1;
+    scale: 1
+}

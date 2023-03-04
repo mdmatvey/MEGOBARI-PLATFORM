@@ -1,0 +1,101 @@
+.map {
+    position: relative;
+    margin: 0 auto;
+    font-size: 0;
+    cursor: grab;
+}
+
+.shadow {
+    position: absolute;
+    box-shadow: rgba(0, 0, 0, 0.06) 0px 2px 4px 0px inset;
+    border-radius: 10px;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.zoom {
+    padding-left: 80px;
+}
+
+.svg-wrapper {
+    margin: 2px;
+    cursor: pointer;
+    transition: .2s;
+    animation-duration: 1s;
+    animation-name: onShowSVG;
+}
+
+
+  
+@keyframes onShowSVG {
+    0% {
+        scale: 0
+    }
+
+    75% {
+        scale: 1.2
+    }
+
+    100% {
+        scale: 1
+    }
+}
+
+.svg-wrapper rect {
+    animation-duration: 1.5s;
+    animation-name: onShowRect;
+    rx: 2
+}
+
+@keyframes onShowRect {
+    0% {
+        rx: 0
+    }
+
+    50% {
+        rx: 0
+    }
+
+    100% {
+        rx: 2
+    }
+}
+
+.svg-wrapper:hover {
+    z-index: 1000;
+    fill: rgba(88, 132, 92, 1);
+    scale: 1.1;
+}
+
+.svg-wrapper:active {
+    scale: 1;
+}
+
+.occupied {
+    cursor: not-allowed;
+    fill: #4c6e32
+}
+
+.occupied:hover {
+    scale: 1;
+    fill: #4c6e32;
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: rgba(88, 132, 92, 0.5);
+    border-radius: 5px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(88, 132, 92, 1);
+}

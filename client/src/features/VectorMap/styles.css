@@ -1,0 +1,16 @@
+svg.segment path {
+    transition: .2s;
+    transform-origin: center;
+    animation-duration: 2s;
+    animation-name: onShowPath;
+}
+  
+@keyframes onShowPath {
+    0% {
+        scale: 0
+    }
+
+    100% {
+        scale: 1
+    }
+}
