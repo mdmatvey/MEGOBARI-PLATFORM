@@ -1,11 +1,11 @@
 import VectorMap from "../../features/VectorMap/VectorMap";
-import HowToUse from "../../widgets/HowToUse/HowToUse";
+import HowToUseVector from "../../features/HowToUseVector/HowToUseVector";
 
 const Main = () => {
     return ( 
         <>
             <VectorMap />
-            <HowToUse />
+            <HowToUseVector />
         </>
     );
 }

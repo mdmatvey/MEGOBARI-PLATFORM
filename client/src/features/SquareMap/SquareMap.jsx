@@ -68,6 +68,7 @@ const SquareMap = observer(() => {
             <rect 
               width="10" 
               height="10"
+              rx="2"
             />
           </svg>
         )

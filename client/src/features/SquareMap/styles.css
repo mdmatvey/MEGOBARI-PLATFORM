@@ -27,42 +27,61 @@
     animation-name: onShowSVG;
 }
 
-
-  
 @keyframes onShowSVG {
     0% {
-        scale: 0
+        transform: scale(0)
     }
 
     75% {
-        scale: 1.2
+        transform: scale(1.2)
     }
 
     100% {
-        scale: 1
+        transform: scale(1)
     }
 }
 
-.svg-wrapper rect {
-    animation-duration: 1.5s;
-    animation-name: onShowRect;
-    rx: 2
-}
-
-@keyframes onShowRect {
+@-webkit-keyframes webkit-onShowSVG {
     0% {
-        rx: 0
+        -webkit-transform: scale(0);
     }
 
-    50% {
-        rx: 0
+    75% {
+        -webkit-transform: scale(1.2);
     }
 
     100% {
-        rx: 2
+        -webkit-transform: scale(1);
     }
 }
 
+@-moz-keyframes moz-onShowSVG {
+    0% {
+        -moz-transform: scale(0);
+    }
+
+    75% {
+        -moz-transform: scale(1.2);
+    }
+
+    100% {
+        -moz-transform: scale(1);
+    }
+}
+
+@-o-keyframes o-onShowSVG {
+    0% {
+        -o-transform: scale(0);
+    }
+
+    75% {
+        -o-transform: scale(1.2);
+    }
+
+    100% {
+        -o-transform: scale(1);
+    }
+}
 .svg-wrapper:hover {
     z-index: 1000;
     fill: rgba(88, 132, 92, 1);
