@@ -1,14 +1,10 @@
 import { Typography } from "@mui/material";
-import ExampleSegment from "../../shared/examples/ExampleSegment";
 
-const PartPurpose = ({ fill, viewbox, d, text }) => {
+const PartPurpose = ({ component, text }) => {
+
     return (  
         <div style={{ display: 'flex', alignItems: 'center' }}>
-            <ExampleSegment
-                fill={fill}
-                viewbox={viewbox}
-                d={d}
-            />
+            {component}
             <Typography variant="h6" component="p" fontWeight={'bold'} style={{margin: '0 20px'}}>
                 —
             </Typography>
