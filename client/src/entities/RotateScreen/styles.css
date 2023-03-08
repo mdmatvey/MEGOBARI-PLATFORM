@@ -1,0 +1,17 @@
+.screenRotate {
+    animation: rotate 10s ease-in-out infinite;
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotate(45deg);
+      }
+
+   50% {
+       transform: rotate(-45deg);
+      }
+
+    100% {
+    transform: rotate(45deg);
+    }
+   }
