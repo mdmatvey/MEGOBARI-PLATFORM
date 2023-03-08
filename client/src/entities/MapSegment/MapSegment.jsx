@@ -21,7 +21,13 @@ const MapSegment = ({ segmentID, top, left, width, height, viewBox, d, forSale, 
             viewBox={viewBox} 
             style={{ position: 'absolute', top: top, left: left }}
         >
-            <path stroke="#fff" strokeLinejoin="round" strokeWidth="2" d={d} />
+            <path 
+                stroke="#fff" 
+                strokeLinejoin="round" 
+                strokeWidth="2" 
+                d={d}
+                style={{ animationDelay: `${segmentID / 10}s` }}
+            />
         </svg>    
     );
 }

@@ -1,8 +1,10 @@
 svg.segment path {
     transition: .2s;
     transform-origin: center;
+    transform: scale(0);
     animation-duration: 2s;
     animation-name: onShowPath;
+    animation-fill-mode: forwards;
 }
   
 @keyframes onShowPath {
