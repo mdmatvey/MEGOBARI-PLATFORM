@@ -32,20 +32,22 @@ const MapControls = observer(({ sliderOrientation, controlsSliderXS, controlsPar
 
   return ( 
         <ThemeProvider theme={theme}>
-            <Grid container height={'100%'} width={'80%'} sx={{ margin: '0 auto' }}>
-                <Grid item xs={controlsSliderXS}>
+            <Grid container height={'100%'} width={'100%'} sx={{ margin: '0 auto' }}>
+                <Grid item width={'80%'} xs={controlsSliderXS}>
                     <Slider
                         sx={{
                             '& input[type="range"]': {
-                            WebkitAppearance: 'slider-vertical',
-                            },
+                                WebkitAppearance: sliderOrientation === 'vertical' ? 'slider-vertical' : 'slider-horizontal',
+                            }
                         }}
-                        orientation={sliderOrientation && sliderOrientation}
+                        orientation={sliderOrientation}
                         value={mapStore.scale} 
                         onChange={((e) => mapStore.setScale(e.target.value))}
                         aria-label="Масштаб"
                         min={100}
                         max={300}
+                        step={10}
+                        marks
                         color={"primary"}
                     />
                 </Grid>

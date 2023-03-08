@@ -74,12 +74,12 @@ const SquareMap = observer(() => {
             viewBox="0 0 10 10" 
             fill="rgba(88, 132, 92, 0.5)"
             xmlns="http://www.w3.org/2000/svg"
-            style={{ animationDelay: `${(rowID + (i - offset)) / 10}s` }}
           >
             <rect 
               width="10" 
               height="10"
               rx="2"
+              style={{ animationDelay: `${(rowID + (i - offset)) / 10}s` }}
             />
           </svg>
         )

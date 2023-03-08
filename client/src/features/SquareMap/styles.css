@@ -23,6 +23,9 @@
     margin: 2px;
     cursor: pointer;
     transition: .2s;
+}
+
+.svg-wrapper rect {
     transform: scale(0);
     animation-duration: 1s;
     animation-name: onShowSVG;

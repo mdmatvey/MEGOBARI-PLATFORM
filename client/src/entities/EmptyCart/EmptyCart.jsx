@@ -4,7 +4,7 @@ import './styles.css'
 
 const EmptyCart = () => {
     return (  
-        <div style={{ height: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+        <div style={{ height: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', margin: '20px 0' }}>
             <AddBoxIcon 
                 className='addSector'
                 sx={{ fontSize: 200 }} 
