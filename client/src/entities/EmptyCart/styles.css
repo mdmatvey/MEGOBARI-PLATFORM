@@ -1,0 +1,39 @@
+.addSector {
+    transition: .3s;
+    animation: add 5s ease-in-out infinite;
+}
+
+@keyframes add {
+    0% {
+        transform: scale(1);
+        color: rgba(88, 132, 92, 0.5)
+    }
+
+    40% {
+        transform: scale(1.2);
+        color: rgba(88, 132, 92, 0.5)
+    }
+
+    50% {
+        transform: scale(1.1);
+        color: rgba(88, 132, 92, 0.5)
+    }
+
+    50% {
+        color: rgba(88, 132, 92, 1)
+    }
+
+    60% {
+        transform: scale(1.2);
+        color: rgba(88, 132, 92, 1)
+    }
+
+    90% {
+        transform: scale(1);
+        color: rgba(88, 132, 92, 1)
+    }
+
+    100% {
+        color: rgba(88, 132, 92, 0.5)
+    }
+}
