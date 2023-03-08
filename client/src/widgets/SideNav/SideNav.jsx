@@ -88,10 +88,10 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
   }),
 );
 
-const SideNav = () => {
+const SideNav = ({ burgerMarginLeft }) => {
     const navigate = useNavigate()
 
-    const [open, setOpen] = useState(true);
+    const [open, setOpen] = useState(false);
   
     const handleDrawerOpen = () => {
       setOpen(true);
@@ -103,7 +103,7 @@ const SideNav = () => {
 
     return ( 
         <ThemeProvider theme={theme}>
-            <Box display="flex" sx={{ flexGrow: 1 }}>
+            <Box display="flex" sx={{ flexGrow: 1, overflow: 'hidden' }}>
                 <CssBaseline />
                 <AppBar sx={{ width: 0 }} position="static" open={open}>
                     <Toolbar>
@@ -115,6 +115,7 @@ const SideNav = () => {
                             sx={{
                                 color: theme.palette.secondary.main,
                                 marginRight: 5,
+                                marginLeft: burgerMarginLeft,
                                 position: 'fixed',
                                 ...(open && { display: 'none' }),
                             }}

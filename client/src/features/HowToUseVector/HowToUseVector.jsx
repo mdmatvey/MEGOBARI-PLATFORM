@@ -3,18 +3,35 @@ import { Container } from "@mui/system";
 import theme from "../../shared/consts/styles/styleConsts";
 import PartPurpose from "../../entities/PartPurpose/PartPurpose";
 import ExampleSegment from "../../shared/examples/segment/ExampleSegment";
+import { useState, useEffect, useContext } from "react";
+import { Context } from "../..";
 
 const HowToUseVector = () => {
+    const { userStore } = useContext(Context)
+
+    const [variant, setVariant] = useState('h2')
+    const [fontSize, setFontSize] = useState('1.5rem')
+
+    useEffect(() => {
+        if (userStore.userWidth < 400) {
+            setVariant('h4')
+            setFontSize('1.2rem')
+        } else if (userStore.userWidth >= 400) {
+            setVariant('h2')
+            setFontSize('1.5rem')
+        }
+    }, [userStore.userWidth])
+
     return (  
         <Container sx={{paddingBottom: 10}}>
-            <Typography variant="h2" component="h2" fontWeight={'bold'} style={{ marginBottom: 10 }}>
+            <Typography variant={variant} component="h2" fontWeight={'bold'} style={{ marginBottom: 10 }}>
                 Карта плантации
             </Typography>
-            <Typography variant="body1" component="p" fontSize={'1.5rem'} style={{ marginBottom: 30 }}>
+            <Typography variant="body1" component="p" fontSize={fontSize} style={{ marginBottom: 30 }}>
                 Перед вами векторная карта нашей плантации, которая расположена в Грузии. 
                 Её общая площадь составляет около 160 000 м&#xB2;. 
                 В данный момент для оформления подписки сдаётся участок 
-                площадью 1 га (10 000м&#xB2;). Участки обозначены цветами:
+                площадью 1 га (10 000 м&#xB2;). Участки обозначены цветами:
             </Typography>
             <PartPurpose
                 component={
@@ -25,6 +42,7 @@ const HowToUseVector = () => {
                     />
                 }
                 text={"Участок зарезервирован (не сдается для подписки)"}
+                width={70}
             />
             <PartPurpose
                 component={
@@ -35,6 +53,7 @@ const HowToUseVector = () => {
                     />
                 }
                 text={"Участок доступен для подписки"}
+                width={70}
             />
             <PartPurpose
                 component={
@@ -45,6 +64,7 @@ const HowToUseVector = () => {
                     />
                 }
                 text={"Буферная зона"}
+                width={70}
             />
             <Typography variant="body1" component="p" fontSize={'1.5rem'} style={{ marginTop: 20 }}>
                 Для оформления подписки нажмите на

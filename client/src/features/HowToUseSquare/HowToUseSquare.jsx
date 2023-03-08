@@ -3,14 +3,32 @@ import { Container } from "@mui/system";
 import theme from "../../shared/consts/styles/styleConsts";
 import PartPurpose from "../../entities/PartPurpose/PartPurpose";
 import ExampleSquare from "../../shared/examples/square/ExampleSquare";
+import { useContext, useEffect, useState } from "react";
+import { Context } from "../..";
+import { observer } from "mobx-react-lite";
 
-const HowToUseVector = () => {
+const HowToUseVector = observer(() => {
+    const { userStore } = useContext(Context)
+
+    const [variant, setVariant] = useState('h2')
+    const [fontSize, setFontSize] = useState('1.5rem')
+
+    useEffect(() => {
+        if (userStore.userWidth < 470) {
+            setVariant('h4')
+            setFontSize('1.2rem')
+        } else if (userStore.userWidth >= 470) {
+            setVariant('h2')
+            setFontSize('1.5rem')
+        }
+    }, [userStore.userWidth])
+
     return (  
         <Container sx={{paddingBottom: 10}}>
-            <Typography variant="h2" component="h2" fontWeight={'bold'} style={{ marginBottom: 10 }}>
+            <Typography variant={variant} component="h2" fontWeight={'bold'} style={{ marginBottom: 10 }}>
                 Как пользоваться картой
             </Typography>
-            <Typography variant="body1" component="p" fontSize={'1.5rem'} style={{ marginBottom: 20 }}>
+            <Typography variant="body1" component="p" fontSize={fontSize} style={{ marginBottom: 20 }}>
                 1 сектор равен 10 квадратным метрам
             </Typography>
             <PartPurpose
@@ -20,6 +38,7 @@ const HowToUseVector = () => {
                     />
                 }
                 text={"Сектор уже занят другим пользователем"}
+                width={20}
             />
             <PartPurpose
                 component={
@@ -28,6 +47,7 @@ const HowToUseVector = () => {
                     />
                 }
                 text={"Сектор свободен для подписки"}
+                width={20}
             />
             <PartPurpose
                 component={
@@ -36,6 +56,7 @@ const HowToUseVector = () => {
                     />
                 }
                 text={"Выбранный вами сектор"}
+                width={20}
             />
             <PartPurpose
                component={
@@ -44,6 +65,7 @@ const HowToUseVector = () => {
                 />
             }
                 text={"Сектор на который вы подписаны:"}
+                width={20}
             />
             <Container>
                 <PartPurpose
@@ -56,6 +78,7 @@ const HowToUseVector = () => {
                         />
                     }
                     text={"Сектор с чёрным (красным) чаем"}
+                    width={20}
                 />
                 <PartPurpose
                     component={
@@ -67,6 +90,7 @@ const HowToUseVector = () => {
                         />
                     }
                     text={"Сектор с зеленым чаем"}
+                    width={20}
                 />
                 <PartPurpose
                     component={
@@ -78,6 +102,7 @@ const HowToUseVector = () => {
                         />
                     }
                     text={"Сектор с белым чаем"}
+                    width={20}
                 />
             </Container>
             <Typography variant="body1" component="p" fontSize={'1.5rem'} style={{ marginTop: 10 }}>
@@ -86,6 +111,6 @@ const HowToUseVector = () => {
             </Typography>
         </Container>
     );
-}
+})
  
 export default HowToUseVector;

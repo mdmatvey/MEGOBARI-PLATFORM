@@ -5,7 +5,17 @@ import { Context } from "../..";
 import './styles.css'
 
 const SquareMap = observer(() => {
-  const { mapStore } = useContext(Context)
+  const { mapStore, userStore } = useContext(Context)
+
+  const [mapWidth, setMapWidth] = useState(800)
+
+  useEffect(() => {
+    if (userStore.userWidth < 880) {
+      setMapWidth('100%')
+    } else if (userStore.userWidth >= 880) {
+      setMapWidth(800)
+    } 
+  }, [userStore.userWidth])
   
   const side = 20
   const margin = 2
@@ -114,7 +124,7 @@ const SquareMap = observer(() => {
   return (
     <div 
       className='map' 
-      style={{ width: 800, height: 520, borderRadius: 10 }}
+      style={{ width: mapWidth, height: 520, borderRadius: 10 }}
     >
       <div className="shadow">
         <ScrollContainer 

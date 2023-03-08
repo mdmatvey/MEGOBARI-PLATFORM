@@ -5,8 +5,9 @@ import { ThemeProvider } from "@mui/system";
 import theme from "../../shared/consts/styles/styleConsts";
 import { observer } from "mobx-react-lite";
 import { Context } from "../..";
+import EmptyCart from "../../entities/EmptyCart/EmptyCart";
 
-const MapControls = observer(() => {
+const MapControls = observer(({ sliderOrientation, controlsSliderXS, controlsParamsXS }) => {
   const { mapStore } = useContext(Context)
 
   const [teaType, setTeaType] = useState('black')
@@ -31,15 +32,15 @@ const MapControls = observer(() => {
 
   return ( 
         <ThemeProvider theme={theme}>
-            <Grid container height={'100%'}>
-                <Grid item xs={2}>
+            <Grid container height={'100%'} width={'80%'} sx={{ margin: '0 auto' }}>
+                <Grid item xs={controlsSliderXS}>
                     <Slider
                         sx={{
                             '& input[type="range"]': {
                             WebkitAppearance: 'slider-vertical',
                             },
                         }}
-                        orientation="vertical"
+                        orientation={sliderOrientation && sliderOrientation}
                         value={mapStore.scale} 
                         onChange={((e) => mapStore.setScale(e.target.value))}
                         aria-label="Масштаб"
@@ -48,11 +49,11 @@ const MapControls = observer(() => {
                         color={"primary"}
                     />
                 </Grid>
-                <Grid item xs={9}>
+                <Grid item xs={controlsParamsXS}>
                     {
                     mapStore.pickedRects.length === 0
                     ?
-                        'Beps'
+                        <EmptyCart />
                     :
                         <>
                             <FormControl fullWidth>
@@ -67,12 +68,12 @@ const MapControls = observer(() => {
                                     <MenuItem value={'white'}>Белый</MenuItem>
                                 </Select>
                             </FormControl>
-                            <Typography variant="h5">Выбрано {mapStore.pickedRects.length * 10} м&#xB2;</Typography> 
-                            <Divider />
-                            <Typography variant="h5">Чая будет получено {mapStore.pickedRects.length * 0.5} кг</Typography> 
-                            <Divider />
-                            <Typography variant="h5">Стоимость: {mapStore.pickedRects.length * 10 * priceMultiplier}$</Typography> 
-                            <Button variant="contained">Купить</Button>
+                            <Typography variant="h5" sx={{ marginTop: 2}}>Выбрано {mapStore.pickedRects.length * 10} м&#xB2;</Typography> 
+                            <Divider sx={{ marginTop: 2}} />
+                            <Typography variant="h5" sx={{ marginTop: 2}}>Чая будет получено {mapStore.pickedRects.length * 0.5} кг</Typography> 
+                            <Divider sx={{ marginTop: 2}} />
+                            <Typography variant="h5" sx={{ marginTop: 2}}s>Стоимость: {mapStore.pickedRects.length * 10 * priceMultiplier}$</Typography> 
+                            <Button variant="contained" sx={{ marginTop: 2}}>Купить</Button>
                         </>
                     }    
                 </Grid>
