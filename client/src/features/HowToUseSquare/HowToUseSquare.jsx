@@ -104,6 +104,54 @@ const HowToUseVector = observer(() => {
                     text={"Сектор с белым чаем"}
                     width={20}
                 />
+                <PartPurpose
+                    component={
+                        <ExampleSquare
+                            linearGradient={true}
+                            color1={"rgb(252, 164, 4)"}
+                            color2={"rgb(255, 248, 0)"}
+                            index={4}
+                        />
+                    }
+                    text={"Сектор с чаем габа"}
+                    width={20}
+                />
+                <PartPurpose
+                    component={
+                        <ExampleSquare
+                            linearGradient={true}
+                            color1={"rgb(252, 164, 4)"}
+                            color2={"rgb(200, 255, 0)"}
+                            index={5}
+                        />
+                    }
+                    text={"Сектор с чаем улун"}
+                    width={20}
+                />
+                <PartPurpose
+                    component={
+                        <ExampleSquare
+                            linearGradient={true}
+                            color1={"rgb(252, 164, 4)"}
+                            color2={"rgb(147, 147, 147)"}
+                            index={6}
+                        />
+                    }
+                    text={"Сектор с жаренным чаем"}
+                    width={20}
+                />
+                <PartPurpose
+                    component={
+                        <ExampleSquare
+                            linearGradient={true}
+                            color1={"rgb(252, 164, 4)"}
+                            color2={"rgb(104, 64, 0)"}
+                            index={7}
+                        />
+                    }
+                    text={"Сектор с чаем пуэр"}
+                    width={20}
+                />
             </Container>
             <Typography variant="body1" component="p" fontSize={'1.5rem'} style={{ marginTop: 10 }}>
                 Для оформления подписки отметьте необходимое количество
