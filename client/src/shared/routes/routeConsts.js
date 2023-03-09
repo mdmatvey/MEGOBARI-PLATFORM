@@ -1,3 +1,5 @@
 export const MAIN_ROUTE = '/'
 export const SEGMENT_ROUTE = '/segment'
 export const SETTINGS_ROUTE = '/settings'
+export const LOGIN_ROUTE = '/login'
+export const REGISTRATION_ROUTE = '/registration'

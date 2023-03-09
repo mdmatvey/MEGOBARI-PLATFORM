@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom'
 import { ThemeProvider } from "@mui/material/styles";
 import theme from "../../shared/consts/styles/styleConsts";
@@ -19,7 +19,11 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import PublicRoundedIcon from '@mui/icons-material/PublicRounded';
 import SettingsRoundedIcon from '@mui/icons-material/SettingsRounded';
-import { MAIN_ROUTE, SETTINGS_ROUTE } from '../../shared/routes/routeConsts';
+import LoginRoundedIcon from '@mui/icons-material/LoginRounded';
+import LogoutRoundedIcon from '@mui/icons-material/LogoutRounded';
+import { LOGIN_ROUTE, MAIN_ROUTE, SETTINGS_ROUTE } from '../../shared/routes/routeConsts';
+import { Context } from '../..';
+import { observer } from 'mobx-react-lite';
 
 const drawerWidth = 260;
 
@@ -88,8 +92,10 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
   }),
 );
 
-const SideNav = ({ burgerMarginLeft }) => {
+const SideNav = observer(({ burgerMarginLeft }) => {
     const navigate = useNavigate()
+
+    const { userStore } = useContext(Context)
 
     const [open, setOpen] = useState(false);
   
@@ -120,7 +126,7 @@ const SideNav = ({ burgerMarginLeft }) => {
                                 ...(open && { display: 'none' }),
                             }}
                         >
-                            <MenuIcon  />
+                            <MenuIcon />
                         </IconButton>
                     </Toolbar>
                 </AppBar>
@@ -189,11 +195,43 @@ const SideNav = ({ burgerMarginLeft }) => {
                                 <ListItemText primary={'Настройки'} sx={{ opacity: open ? 1 : 0 }} />
                             </ListItemButton>
                         </ListItem>
+                        <ListItem 
+                            disablePadding 
+                            onClick={() => {
+                              if (userStore.isAuth) {
+                                userStore.setIsAuth(false)
+                              } else {
+                                navigate(LOGIN_ROUTE)
+                              }
+                            }} 
+                            sx={{ display: 'block' }}
+                        >
+                            <ListItemButton
+                                sx={{
+                                    color: theme.palette.secondary.main,
+                                    minHeight: 48,
+                                    justifyContent: open ? 'initial' : 'center',
+                                    px: 2.5,
+                                }}
+                            >
+                                <ListItemIcon
+                                    sx={{
+                                        color: theme.palette.secondary.main,
+                                        minWidth: 0,
+                                        mr: open ? 3 : 'auto',
+                                        justifyContent: 'center',
+                                    }}
+                                >
+                                    {userStore.isAuth ? <LogoutRoundedIcon /> : <LoginRoundedIcon />}
+                                </ListItemIcon>
+                                <ListItemText primary={userStore.isAuth ? 'Выйти' : 'Войти'} sx={{ opacity: open ? 1 : 0 }} />
+                            </ListItemButton>
+                        </ListItem>
                     </List>
                 </Drawer>
             </Box>
         </ThemeProvider>
     );
-}
+})
  
 export default SideNav;
