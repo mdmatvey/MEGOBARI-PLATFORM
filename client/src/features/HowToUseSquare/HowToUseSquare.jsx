@@ -131,7 +131,7 @@ const HowToUseVector = observer(() => {
                             <ExampleSquare
                                 linearGradient={true}
                                 color1={"rgb(252, 164, 4)"}
-                                color2={"rgb(200, 255, 0)"}
+                                color2={"rgb(181, 255, 0)"}
                                 index={5}
                             />
                         }
